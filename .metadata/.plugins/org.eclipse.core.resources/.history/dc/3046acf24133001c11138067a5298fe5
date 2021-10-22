@@ -1,0 +1,166 @@
+package ex3;
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+
+/**
+ * Classe référence d'un zoo
+ * 
+ * @author Felix
+ *
+ */
+public class Zoo {
+	/** Quantité de nourriture pour reptile */
+	private static final double NOURRITURE_REPTILE = 0.1;
+	/** Quantité de nourriture pour aquarium */
+	private static final double NOURRITURE_AQUARIUM = 0.2;
+	/** Quantité de nourriture pour animaux de la savane et animaux carnivores */
+	private static final double NOURRITURE_SAVANE_CARNIVORE = 10;
+	/** Nom du zoo */
+	private String nom;
+	/** Zones du zoo */
+	private HashMap<TypeZone, List<Animal>> zones;
+
+	/**
+	 * Constructeur
+	 * 
+	 * @param nom
+	 * @param zones
+	 */
+	public Zoo(String nom, HashMap<TypeZone, List<Animal>> zones) {
+		this.nom = nom;
+		this.zones = zones;
+	}
+
+	/**
+	 * @param nom
+	 */
+	public Zoo(String nom) {
+		this.nom = nom;
+	}
+
+	/**
+	 * @return the nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * @param nom the nom to set
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	/**
+	 * @return the zones
+	 */
+	public HashMap<TypeZone, List<Animal>> getZones() {
+		return zones;
+	}
+
+	/**
+	 * @param zones the zones to set
+	 */
+	public void setZones(HashMap<TypeZone, List<Animal>> zones) {
+		this.zones = zones;
+	}
+
+	/**
+	 * @param zone
+	 * @return one zone
+	 */
+	public List<Animal> getOneZone(TypeZone zone) {
+		return this.zones.get(zone);
+	}
+
+	/**
+	 * Méthode permettant d'ajouter un animal dans une zone du zoo
+	 * 
+	 * @param animal
+	 */
+	public void ajouterAnimal(Animal animal) {
+		if (zones == null) {
+			List<Animal> animaux = new ArrayList<>();
+			this.zones = new HashMap<>();
+		}
+		if (animal.getTypeAnimal().equals(TypeAnimal.MAMMIFERE)
+				&& animal.getTypeRegime().equals(TypeRegime.HERBIVORE)) {
+			updateZone(TypeZone.SAVANE_AFRICAINE, animal);
+		}
+		if (animal.getTypeAnimal().equals(TypeAnimal.MAMMIFERE)
+				&& animal.getTypeRegime().equals(TypeRegime.CARNIVORE)) {
+			updateZone(TypeZone.ZONE_CARNIVORE, animal);
+		}
+		if (animal.getTypeAnimal().equals(TypeAnimal.REPTILE)) {
+			updateZone(TypeZone.FERME_REPTILE, animal);
+		}
+		if (animal.getTypeAnimal().equals(TypeAnimal.POISSON)) {
+			updateZone(TypeZone.AQUARIUM, animal);
+		}
+	}
+
+	/**
+	 * Méthode permettant d'afficher les animaux du zoo ainsi que leur zone
+	 */
+	public void afficherAnimaux() {
+		if (this.zones == null) {
+			System.err.println("Erreur : le zoo ne contient encore aucun animal");
+		} else {
+			Set<Map.Entry<TypeZone, List<Animal>>> entries = this.zones.entrySet();
+			for (Map.Entry<TypeZone, List<Animal>> entry : entries) {
+				List<Animal> animaux = entry.getValue();
+				System.out.println(entry.getKey().getNom() + " : ");
+				for (Animal animal : animaux) {
+					System.out.print(animal.getNomAnimal() + " | ");
+				}
+				System.out.println("\n------------------------");
+			}
+		}
+	}
+
+	/**
+	 * Méthode permettant de mettre à jour une zone du zoo
+	 * 
+	 * @param typeZone
+	 * @param animal
+	 */
+	private void updateZone(TypeZone typeZone, Animal animal) {
+		if (!zones.containsKey(typeZone)) {
+			List<Animal> liste = new ArrayList<>();
+			liste.add(animal);
+			zones.put(typeZone, liste);
+		} else {
+			for (Map.Entry<TypeZone, List<Animal>> zone : zones.entrySet()) {
+				if (zone.getKey() == typeZone) {
+					List<Animal> animaux = zone.getValue();
+					animaux.add(animal);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Méthode permettant de calculer le nombre de kg de nourriture à prévoir selon
+	 * le nombre d'animaux par zone du zoo
+	 * 
+	 * @param zone
+	 */
+	public void calculerKgsNourritureParJouer(TypeZone zone) {
+		double nourritureParJour = 0;
+		List<Animal> liste = this.getOneZone(zone);
+		if (zone.equals(TypeZone.ZONE_CARNIVORE) || zone.equals(TypeZone.SAVANE_AFRICAINE)) {
+			nourritureParJour = liste.size() * NOURRITURE_SAVANE_CARNIVORE;
+		} else if (zone.equals(TypeZone.AQUARIUM)) {
+			nourritureParJour = liste.size() * NOURRITURE_AQUARIUM;
+		} else if (zone.equals(TypeZone.FERME_REPTILE)) {
+			nourritureParJour = liste.size() * NOURRITURE_REPTILE;
+		}
+		System.out.println("Il faudra prévoir pour la " + zone.getNom() + " au moins " + nourritureParJour
+				+ " kg de nourriture par jour.\n------------------------");
+	}
+}
