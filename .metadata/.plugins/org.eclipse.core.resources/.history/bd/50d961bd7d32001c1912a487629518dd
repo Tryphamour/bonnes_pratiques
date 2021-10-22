@@ -1,0 +1,14 @@
+package main.java;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class SaisonTest {
+
+	@Test
+	public void testLibelle() {
+		Saison nomSaison = Saison.valueByLibelle("Hiver");
+		assertEquals(Saison.HIVER, nomSaison);
+	}
+
+}

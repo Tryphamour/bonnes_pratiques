@@ -1,0 +1,13 @@
+package ex1;
+
+import java.util.Date;
+
+/**
+ * Classe référence d'entreprise
+ * 
+ * @author Felix
+ *
+ */
+public class Entreprise {
+
+}

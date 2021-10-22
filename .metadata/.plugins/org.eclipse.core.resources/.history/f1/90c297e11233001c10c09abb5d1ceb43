@@ -1,0 +1,20 @@
+package ex2;
+
+/**
+ * Représente un compte bancaire de type livret A
+ * 
+ * @author Felix
+ *
+ */
+public class LivretA extends CompteBancaire {
+
+	private static final int DECOUVERT_LIVRET_A = 0;
+
+	private double tauxRemuneration;
+
+	public LivretA(double solde, double tauxRemuneration) {
+		super(solde, DECOUVERT_LIVRET_A);
+		this.tauxRemuneration = tauxRemuneration;
+	}
+
+}

@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+C:\Users\sonag\Documents\Diginamic\tp\java\bonnes_pratiques\.metadata\.plugins\org.eclipse.jdt.core
+2641680984.index
+3988285001.index
+3936899692.index
+639407153.index
+3053418740.index
+2898046865.index
+1865797976.index

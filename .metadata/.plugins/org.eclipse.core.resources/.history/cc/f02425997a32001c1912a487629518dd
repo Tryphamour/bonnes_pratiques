@@ -1,0 +1,12 @@
+package test.java;
+
+import org.junit.Test;
+
+public class SaisonTest {
+	
+	@Test
+	public void testLibelle {
+		
+	}
+
+}

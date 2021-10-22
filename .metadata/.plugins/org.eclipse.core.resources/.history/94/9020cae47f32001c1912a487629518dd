@@ -1,0 +1,14 @@
+package main.java;
+
+import static org.junit.Assert.assertNull;
+
+import org.junit.Test;
+
+public class PieceTest {
+
+	@Test
+	public void testPieceNull() throws Exception {
+		
+	}
+
+}

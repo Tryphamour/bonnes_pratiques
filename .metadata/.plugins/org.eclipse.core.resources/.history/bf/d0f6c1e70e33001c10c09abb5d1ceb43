@@ -1,0 +1,31 @@
+package ex1;
+
+/**
+ * @author Felix
+ *
+ */
+
+public class Calcul {
+
+	/**
+	 * Addition de deux int
+	 * 
+	 * @param int a
+	 * @param int b
+	 * @return resultat de l'addition
+	 */
+	public int addition(int a, int b) {
+		return a + b;
+	}
+
+	/**
+	 * Soustraction de deux int
+	 * 
+	 * @param int a
+	 * @param int b
+	 * @return resultat de la soustraction
+	 */
+	public int soustraction(int a, int b) {
+		return a - b;
+	}
+}

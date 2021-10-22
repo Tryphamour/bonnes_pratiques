@@ -1,0 +1,15 @@
+package ex2;
+
+/**
+ * Représente un compte bancaire de type livret A
+ * 
+ * @author Felix
+ *
+ */
+public class LivretA extends CompteBancaire {
+
+	public LivretA(String type, double solde, double tauxRemuneration) {
+		super(type, solde, 0, tauxRemuneration);
+	}
+
+}
