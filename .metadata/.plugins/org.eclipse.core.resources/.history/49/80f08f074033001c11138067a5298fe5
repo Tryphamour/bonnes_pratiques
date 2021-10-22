@@ -1,0 +1,20 @@
+package ex3;
+
+public enum TypeZone {
+	SAVANE_AFRICAINE("Savane Africaine"), ZONE_CARNIVORE("Zone carnivore"), FERME_REPTILE("Ferme reptile"),
+	AQUARIUM("Zone Aquarium");
+
+	private String nom;
+
+	private TypeZone(String nom) {
+		this.nom = nom;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+}

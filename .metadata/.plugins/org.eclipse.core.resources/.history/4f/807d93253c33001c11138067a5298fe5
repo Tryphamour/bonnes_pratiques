@@ -1,0 +1,107 @@
+package ex3;
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+
+public class Zoo {
+
+	private String nom;
+	private HashMap<TypeZone, List<Animal>> zones;
+
+	public Zoo(String nom, HashMap<TypeZone, List<Animal>> zones) {
+		super();
+		this.nom = nom;
+		this.zones = zones;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public HashMap<TypeZone, List<Animal>> getZones() {
+		return zones;
+	}
+
+	public void setZones(HashMap<TypeZone, List<Animal>> zones) {
+		this.zones = zones;
+	}
+
+	public List<Animal> getOneZone(TypeZone zone) {
+		return this.zones.get(zone);
+	}
+
+	public void ajouterAnimal(Animal animal) {
+		if (zones == null) {
+			List<Animal> animaux = new ArrayList<>();
+			this.zones = new HashMap<>();
+		}
+		// Zone Savane Africaine
+		if (animal.getTypeAnimal().equals(TypeAnimal.MAMMIFERE)
+				&& animal.getTypeRegime().equals(TypeRegime.HERBIVORE)) {
+			updateZone(TypeZone.SAVANE_AFRICAINE, animal);
+		}
+		// Zone carnivore
+		if (animal.getTypeAnimal().equals(TypeAnimal.MAMMIFERE)
+				&& animal.getTypeRegime().equals(TypeRegime.CARNIVORE)) {
+			updateZone(TypeZone.ZONE_CARNIVORE, animal);
+		}
+		// Zone Ferme réptile
+		if (animal.getTypeAnimal().equals(TypeAnimal.REPTILE)) {
+			updateZone(TypeZone.FERME_REPTILE, animal);
+		}
+		// Zone Aquarium
+		if (animal.getTypeAnimal().equals(TypeAnimal.POISSON)) {
+			updateZone(TypeZone.AQUARIUM, animal);
+		}
+	}
+
+	public void afficherAnimaux() {
+		if (this.zones == null) {
+			System.err.println("Erreur : le zoo ne contient encore aucun animal");
+		} else {
+			Set<Map.Entry<TypeZone, List<Animal>>> entries = this.zones.entrySet();
+			for (Map.Entry<TypeZone, List<Animal>> entry : entries) {
+				List<Animal> animaux = entry.getValue();
+				System.out.println("\nZone : " + entry.getKey().getNom());
+				for (Animal animal : animaux) {
+					System.out.print(" | " + animal.getNomAnimal() + " | ");
+				}
+			}
+		}
+	}
+
+	private void updateZone(TypeZone typeZone, Animal animal) {
+		if (!zones.containsKey(typeZone)) {
+			List<Animal> liste = new ArrayList<>();
+			liste.add(animal);
+			zones.put(typeZone, liste);
+		} else {
+			for (Map.Entry<TypeZone, List<Animal>> zone : zones.entrySet()) {
+				if (zone.getKey() == typeZone) {
+					List<Animal> animaux = zone.getValue();
+					animaux.add(animal);
+				}
+			}
+		}
+	}
+
+	public void calculerKgsNourritureParJouer(TypeZone zone) {
+		double nourritureParJour = 0;
+		List<Animal> liste = this.getOneZone(zone);
+		if (zone.equals(TypeZone.ZONE_CARNIVORE) || zone.equals(TypeZone.SAVANE_AFRICAINE)) {
+			nourritureParJour = liste.size() * 10;
+		} else if (zone.equals(TypeZone.AQUARIUM)) {
+			nourritureParJour = liste.size() * 0.2;
+		} else if (zone.equals(TypeZone.FERME_REPTILE)) {
+			nourritureParJour = liste.size() * 0.1;
+		}
+		System.out.println("\nIl faut prévoir pour la " + zone.getNom() + " " + nourritureParJour + " kg par jour.");
+	}
+}

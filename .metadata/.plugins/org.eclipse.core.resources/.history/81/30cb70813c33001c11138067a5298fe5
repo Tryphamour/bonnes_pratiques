@@ -1,0 +1,43 @@
+package ex3;
+
+public class ZooApplication {
+
+	public static void main(String[] args) throws NoSuchMethodException {
+		Zoo zoo = new Zoo("Zoo de test", null);
+
+		Animal gazelle = new Animal("Gazelle", TypeAnimal.MAMMIFERE, TypeRegime.HERBIVORE);
+		Animal zebre = new Animal("Zèbre", TypeAnimal.MAMMIFERE, TypeRegime.HERBIVORE);
+		Animal lion = new Animal("Lion", TypeAnimal.MAMMIFERE, TypeRegime.CARNIVORE);
+		Animal panthere = new Animal("Panthère", TypeAnimal.MAMMIFERE, TypeRegime.CARNIVORE);
+		Animal requinBlanc = new Animal("Requin blanc", TypeAnimal.POISSON, TypeRegime.CARNIVORE);
+		Animal truiteDoree = new Animal("Truite dorée", TypeAnimal.POISSON, TypeRegime.CARNIVORE);
+		Animal boaConstrictor = new Animal("Boa constrictor", TypeAnimal.REPTILE, TypeRegime.CARNIVORE);
+		Animal python = new Animal("Python", TypeAnimal.REPTILE, TypeRegime.CARNIVORE);
+
+		zoo.ajouterAnimal(gazelle);
+		zoo.ajouterAnimal(zebre);
+		zoo.ajouterAnimal(lion);
+		zoo.ajouterAnimal(panthere);
+		zoo.ajouterAnimal(requinBlanc);
+		zoo.ajouterAnimal(truiteDoree);
+		zoo.ajouterAnimal(boaConstrictor);
+		zoo.ajouterAnimal(python);
+
+		zoo.afficherAnimaux();
+		zoo.calculerKgsNourritureParJouer(TypeZone.AQUARIUM);
+	}
+
+//	public static void main(String[] args) {
+//		Zoo zoo = new Zoo("Thoiry", aquarium, fermeReptile, savaneAfricaine, zoneCarnivore);
+//		
+//		zoo.addAnimal("Gazelle", "MAMMIFERE", "HERBIVORE");
+//		zoo.addAnimal("Zèbre", "MAMIFERE", "HERBIVORE");
+//		zoo.addAnimal("Lion", "MAMMIFERE", "HERBIVORE");
+//		zoo.addAnimal("Panthère", "MAMMIFERE", "CARNIVORE");
+//		zoo.addAnimal("Requin blanc", "POISSON", "HERBIVORE");
+//		zoo.addAnimal("Truite dore", "POISSON", "HERBIVORE");
+//		zoo.addAnimal("Boa constrictor", "SERPENT", "CARNIVORE");
+//		zoo.addAnimal("Python", "SERPENT", "CARNIVORE");
+//	}
+
+}

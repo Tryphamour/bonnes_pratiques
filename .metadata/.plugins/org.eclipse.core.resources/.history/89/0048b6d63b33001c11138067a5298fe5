@@ -1,0 +1,16 @@
+package ex3;
+
+public class Animal {
+
+	private String nomAnimal;
+    private TypeAnimal typeAnimal;
+    private TypeRegime typeRegime;
+    
+	public Animal(String nomAnimal, TypeAnimal typeAnimal, TypeRegime typeRegime) {
+		this.nomAnimal = nomAnimal;
+		this.typeAnimal = typeAnimal;
+		this.typeRegime = typeRegime;
+	}
+	
+	
+}

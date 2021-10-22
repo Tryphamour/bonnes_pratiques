@@ -1,0 +1,70 @@
+package ex3;
+
+/**
+ * Classe référence d'un animal
+ * 
+ * @author Felix
+ *
+ */
+public class Animal {
+
+	/** Nom de l'animal */
+	private String nomAnimal;
+	/** Type d'animal */
+	private TypeAnimal typeAnimal;
+	/** Type de régime de l'animal */
+	private TypeRegime typeRegime;
+
+	/**
+	 * @param nomAnimal
+	 * @param typeAnimal
+	 * @param typeRegime
+	 */
+	public Animal(String nomAnimal, TypeAnimal typeAnimal, TypeRegime typeRegime) {
+		this.nomAnimal = nomAnimal;
+		this.typeAnimal = typeAnimal;
+		this.typeRegime = typeRegime;
+	}
+
+	/**
+	 * @return the nomAnimal
+	 */
+	public String getNomAnimal() {
+		return nomAnimal;
+	}
+
+	/**
+	 * @param nomAnimal the nomAnimal to set
+	 */
+	public void setNomAnimal(String nomAnimal) {
+		this.nomAnimal = nomAnimal;
+	}
+
+	/**
+	 * @return the typeAnimal
+	 */
+	public TypeAnimal getTypeAnimal() {
+		return typeAnimal;
+	}
+
+	/**
+	 * @param typeAnimal the typeAnimal to set
+	 */
+	public void setTypeAnimal(TypeAnimal typeAnimal) {
+		this.typeAnimal = typeAnimal;
+	}
+
+	/**
+	 * @return the typeRegime
+	 */
+	public TypeRegime getTypeRegime() {
+		return typeRegime;
+	}
+
+	/**
+	 * @param typeRegime the typeRegime to set
+	 */
+	public void setTypeRegime(TypeRegime typeRegime) {
+		this.typeRegime = typeRegime;
+	}
+}

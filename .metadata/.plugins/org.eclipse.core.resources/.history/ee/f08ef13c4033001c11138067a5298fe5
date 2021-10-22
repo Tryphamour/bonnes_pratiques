@@ -1,0 +1,32 @@
+package ex3;
+
+/**
+ * Enumération des types de zone
+ * 
+ * @author Felix
+ *
+ */
+public enum TypeZone {
+	SAVANE_AFRICAINE("Savane Africaine"), ZONE_CARNIVORE("Zone carnivore"), FERME_REPTILE("Ferme reptile"),
+	AQUARIUM("Zone Aquarium");
+
+	/** Nom de la zone */
+	private String nom;
+
+	/**
+	 * Constructeur
+	 * 
+	 * @param nom
+	 */
+	private TypeZone(String nom) {
+		this.nom = nom;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+}
